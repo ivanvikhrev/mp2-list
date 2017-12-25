@@ -23,6 +23,7 @@ class List
   Node* head;
 public:
   List() { head = nullptr; }
+  List(Node* A) { head = A; }
   List(const List& list2);
   List& operator=(const List& list2);
   ~List();

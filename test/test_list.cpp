@@ -558,3 +558,14 @@ TEST(List, inverse_of_one_node_list_is_correct)
   EXPECT_EQ(5, l.GetHead()->data);
   EXPECT_EQ(NULL, l.GetHead()->next);
 }
+
+TEST(List, can_print)
+{
+	Node* First = new Node(0);
+	List A(First);
+	for (int i = 1; i < 10; i++)
+	{
+		A.InsertToTail(i);
+	}
+	cout << A << endl;
+}
