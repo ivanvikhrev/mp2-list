@@ -3,14 +3,21 @@
 List::List(const List& list2)// проверитть позже
 {
 	if (list2.head)
-	{ 
-		Node *TempPtr = list2.head;
-		head = nullptr;
-		while (TempPtr)
+	{  
+		
+		head = new Node(list2.head->data, list2.head);
+		Node *TempPtr1 = head; //new Node ((*list2.head).data, list2.head);
+		Node *TempPtr2 = (*list2.head).next;
+		//head = nullptr;
+		while (TempPtr2)
 		{
-			
-			InsertToTail(TempPtr->data);
-			TempPtr = TempPtr->next;
+			TempPtr1->next = new Node (TempPtr2->data, TempPtr2->next);
+			TempPtr1 = TempPtr1->next;
+			TempPtr2 = TempPtr2->next;
+
+				/*InsertToTail(TempPtr->data);
+			TempPtr = TempPtr->next;*/
+
 		}
 	}
 	else
@@ -26,17 +33,22 @@ List& List::operator=(const List & list2)
 	{
 		Clean();
 		if (list2.head)
-		{   
-			Node *TempPtr = list2.head;
-			head = nullptr;
-			while (TempPtr)
+		{   delete head;
+			head = new Node(list2.head->data, list2.head);
+			Node *TempPtr1 = head;
+			Node *TempPtr2 = list2.head->next;
+			//head = nullptr;
+			while (TempPtr2)
 			{    
-				InsertToTail(TempPtr->data);
-				TempPtr = TempPtr->next;
+				TempPtr1-> next = new Node (TempPtr2->data);
+                TempPtr1 = TempPtr1->next;
+				TempPtr2 = TempPtr2->next;
+				/*InsertToTail(TempPtr->data);
+				TempPtr = TempPtr->next;*/
 			}
 		}
 	    else
-			head = nullptr;
+			head = nullptr; //nullptr;
 	}
 	return *this;
 }

@@ -13,7 +13,7 @@ struct Node
   // здесь могут быть конструкторы, методы, деструктор Node
  // Node() { data = NULL; next = nullptr; }
   Node(DataType d = 0, Node* n = nullptr) { data = d; next = n; }
-  Node(const Node& node2) { data = node2.data; next = nullptr; }//?
+  Node(const Node& node2) { data = node2.data; next = nullptr; }
   bool operator==(const Node& node2) const { return (data == node2.data && next == node2.next); }
 };
 
